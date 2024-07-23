@@ -1,4 +1,3 @@
-'use strict';
 const $ = require('jquery');
 
 $('body').append('<p>Holberton Dashboard</p>');
