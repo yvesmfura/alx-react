@@ -1,4 +1,4 @@
-# 0x02. React propsi
+# 0x02. React props
 ## Learning Objectives
 
 - How to create basic React components using functions
