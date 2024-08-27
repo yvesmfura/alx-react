@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# Define an associative array where keys are file paths and values are commit messages
+declare -A files=(
+    ["README.md"]="Add README file"
+    ["task_0/dashboard/.babelrc"]="Add babel configuration file"
+    ["task_0/dashboard/__mocks__/fileMock.js"]="Add file mock for Jest"
+    ["task_0/dashboard/__mocks__/styleMock.js"]="Add style mock for Jest"
+    ["task_0/dashboard/config/setupTests.js"]="Add setup tests configuration"
+    ["task_0/dashboard/config/webpack.config.js"]="Add Webpack configuration file"
+    ["task_0/dashboard/dist/24bab5d633e36ca8d17edc63164cf934.jpg"]="Add sample image (24bab5d6)"
+    ["task_0/dashboard/dist/36c201dff2136877bd1ac381dff1e362.png"]="Add sample image (36c201df)"
+    ["task_0/dashboard/dist/bundle.js"]="Add compiled JavaScript bundle"
+    ["task_0/dashboard/dist/index.html"]="Add index.html for dashboard"
+    ["task_0/dashboard/dist/login-success.json"]="Add login success JSON file"
+    ["task_0/dashboard/dist/node_modules_web-vitals_dist_web-vitals_js.bundle.js"]="Add web-vitals JS bundle"
+    ["task_0/dashboard/notifications.json"]="Add notifications JSON file"
+    ["task_0/dashboard/package-lock.json"]="Add package-lock file"
+    ["task_0/dashboard/package.json"]="Add package.json for dashboard"
+    ["task_0/dashboard/src/App/App.js"]="Add main App component"
+    ["task_0/dashboard/src/App/App.test.js"]="Add tests for App component"
+    ["task_0/dashboard/src/App/AppContext.js"]="Add AppContext for state management"
+    ["task_0/dashboard/src/BodySection/BodySection.js"]="Add BodySection component"
+    ["task_0/dashboard/src/BodySection/BodySection.test.js"]="Add tests for BodySection component"
+    ["task_0/dashboard/src/BodySection/BodySectionWithMarginBottom.js"]="Add BodySection with margin bottom component"
+    ["task_0/dashboard/src/BodySection/BodySectionWithMarginBottom.test.js"]="Add tests for BodySection with margin bottom component"
+    ["task_0/dashboard/src/CourseList/CourseList.js"]="Add CourseList component"
+    ["task_0/dashboard/src/CourseList/CourseList.test.js"]="Add tests for CourseList component"
+    ["task_0/dashboard/src/CourseList/CourseListRow.js"]="Add CourseListRow component"
+    ["task_0/dashboard/src/CourseList/CourseListRow.test.js"]="Add tests for CourseListRow component"
+    ["task_0/dashboard/src/CourseList/CourseShape.js"]="Add CourseShape prop-types definition"
+    ["task_0/dashboard/src/Footer/Footer.js"]="Add Footer component"
+    ["task_0/dashboard/src/Footer/Footer.test.js"]="Add tests for Footer component"
+    ["task_0/dashboard/src/HOC/WithLogging.js"]="Add WithLogging HOC"
+    ["task_0/dashboard/src/HOC/WithLogging.test.js"]="Add tests for WithLogging HOC"
+    ["task_0/dashboard/src/Header/Header.js"]="Add Header component"
+    ["task_0/dashboard/src/Header/Header.test.js"]="Add tests for Header component"
+    ["task_0/dashboard/src/Login/Login.js"]="Add Login component"
+    ["task_0/dashboard/src/Login/Login.test.js"]="Add tests for Login component"
+    ["task_0/dashboard/src/Login/__snapshots__/Login.test.js.snap"]="Add snapshot tests for Login component"
+    ["task_0/dashboard/src/Notifications/NotificationItem.js"]="Add NotificationItem component"
+    ["task_0/dashboard/src/Notifications/NotificationItem.test.js"]="Add tests for NotificationItem component"
+    ["task_0/dashboard/src/Notifications/NotificationItemShape.js"]="Add NotificationItemShape prop-types definition"
+    ["task_0/dashboard/src/Notifications/Notifications.js"]="Add Notifications component"
+    ["task_0/dashboard/src/Notifications/Notifications.test.js"]="Add tests for Notifications component"
+    ["task_0/dashboard/src/actions/courseActionCreators.js"]="Add course action creators"
+    ["task_0/dashboard/src/actions/courseActionCreators.test.js"]="Add tests for course action creators"
+    ["task_0/dashboard/src/actions/courseActionTypes.js"]="Add course action types"
+    ["task_0/dashboard/src/actions/notificationActionCreators.js"]="Add notification action creators"
+    ["task_0/dashboard/src/actions/notificationActionCreators.test.js"]="Add tests for notification action creators"
+    ["task_0/dashboard/src/actions/notificationActionTypes.js"]="Add notification action types"
+    ["task_0/dashboard/src/actions/uiActionCreators.js"]="Add UI action creators"
+    ["task_0/dashboard/src/actions/uiActionCreators.test.js"]="Add tests for UI action creators"
+    ["task_0/dashboard/src/actions/uiActionTypes.js"]="Add UI action types"
+    ["task_0/dashboard/src/assets/Holberton-logo.jpg"]="Add Holberton logo"
+    ["task_0/dashboard/src/assets/close-icon.png"]="Add close icon"
+    ["task_0/dashboard/src/assets/favicon.ico"]="Add favicon"
+    ["task_0/dashboard/src/index.js"]="Add entry point for the dashboard app"
+    ["task_0/dashboard/src/reducers/uiReducer.js"]="Add UI reducer"
+    ["task_0/dashboard/src/reducers/uiReducer.test.js"]="Add tests for UI reducer"
+    ["task_0/dashboard/src/reportWebVitals.js"]="Add reportWebVitals setup"
+    ["task_0/dashboard/src/schema/notifications.js"]="Add notifications schema"
+    ["task_0/dashboard/src/schema/notifications.test.js"]="Add tests for notifications schema"
+    ["task_0/dashboard/src/utils/utils.js"]="Add utility functions"
+    ["task_0/dashboard/src/utils/utils.test.js"]="Add tests for utility functions"
+    # Repeat the same for all files in task_1, task_2, etc.
+)
+
+# Loop through the array and commit each file with its respective message
+for file in "${!files[@]}"; do
+    git add "$file"
+    git commit -m "${files[$file]}"
+done
+
+# Push all commits to the repository
+git push origin main
+
